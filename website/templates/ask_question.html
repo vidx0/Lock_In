@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Ask a Question{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1>Ask a Question</h1>
+    <form method="POST">
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" class="form-control" id="title" name="title" required />
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="category_id">Category</label>
+            <select class="form-control" id="category_id" name="category_id" required>
+                {% for category in categories %}
+                <option value="{{ category.id }}">{{ category.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="wagered_points">Wagered Points</label>
+            <input type="number" class="form-control" id="wagered_points" name="wagered_points" min="1" required />
+        </div>
+        <button type="submit" class="btn btn-primary">Post Question</button>
+    </form>
+</div>
+{% endblock %}

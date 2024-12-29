@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Reels{% endblock %}
+
+{% block content %}
+<div id="video-container">
+    <!-- Videos will be dynamically loaded here -->
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const container = document.getElementById("video-container");
+    let page = 1;
+
+    // Function to load videos
+    const loadVideos = async () => {
+        const response = await fetch(`/api/videos?page=${page}`);
+        const data = await response.json();
+        data.videos.forEach(video => {
+            const videoDiv = document.createElement("div");
+            videoDiv.classList.add("video-item");
+            videoDiv.innerHTML = `
+                <video controls autoplay loop muted width="100%" height="auto">
+                    <source src="/video/${video.id}" type="video/mp4">
+                </video>
+                <p>${video.description}</p>
+            `;
+            container.appendChild(videoDiv);
+        });
+
+        // Increment page if there are more videos
+        if (data.has_next) page++;
+    };
+
+    // Load initial videos
+    loadVideos();
+
+    // Infinite scrolling
+    window.addEventListener("scroll", () => {
+        if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+            loadVideos();
+        }
+    });
+});
+</script>
+{% endblock %}

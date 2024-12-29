@@ -1,0 +1,60 @@
+{% extends "base.html" %} {% block title %}Timer{% endblock %} {% block content
+    %}
+    <div class="container mt-4">
+        <h2 class="text-center">Start the Lock</h2>
+        <div class="text-center">
+            <h3 id="timer-display">00:00:00</h3>
+            <button id="start-btn" class="btn btn-success">Start</button>
+            <button id="stop-btn" class="btn btn-danger" disabled>Stop</button>
+        </div>
+        <div class="text-center mt-4">
+            <p>Locked In for: <span id="total-time">{{ current_user.time_spent }}</span> seconds</p>
+            <p>Generated: <span id="total-points">{{ current_user.points }}</span> aura points</p>
+        </div>
+    </div>
+    {% endblock %}
+    {% block javascript %}
+		<script type="text/javascript">
+			function deleteNote(noteId) {
+				fetch("/delete-note", {
+					method: "POST",
+					body: JSON.stringify({ noteId: noteId }),
+				}).then((_res) => {
+					window.location.href = "/";
+				});
+			}
+            let timer;
+    let elapsedTime = 0;
+
+    document.getElementById('start-btn').addEventListener('click', () => {
+        const startTime = Date.now();
+        timer = setInterval(() => {
+            elapsedTime = Math.floor((Date.now() - startTime) / 1000);
+            const hours = String(Math.floor(elapsedTime / 3600)).padStart(2, '0');
+            const minutes = String(Math.floor((elapsedTime % 3600) / 60)).padStart(2, '0');
+            const seconds = String(elapsedTime % 60).padStart(2, '0');
+            document.getElementById('timer-display').innerText = `${hours}:${minutes}:${seconds}`;
+        }, 1000);
+        document.getElementById('start-btn').disabled = true;
+        document.getElementById('stop-btn').disabled = false;
+    });
+
+    document.getElementById('stop-btn').addEventListener('click', () => {
+        clearInterval(timer);
+        fetch('/timer', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ time_spent: elapsedTime }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('total-time').innerText = data.time_spent;
+            document.getElementById('total-points').innerText = data.points;
+        });
+        document.getElementById('start-btn').disabled = false;
+        document.getElementById('stop-btn').disabled = true;
+        location.reload();
+    });
+		</script>
+		{% endblock %}
+    
