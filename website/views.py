@@ -6,6 +6,7 @@ from werkzeug.utils import secure_filename
 from .models import *
 from . import db
 from flask import Response
+import json
 
 
 
@@ -109,23 +110,40 @@ def ask_question():
     return render_template('ask_question.html', categories=categories, user=current_user)
 
 
-@views.route('/answer/<int:question_id>', methods=['POST'])
+@views.route('/answer/<int:question_id>', methods=['GET', 'POST'])
 @login_required
-def answer_question(question_id):
+def answer_question_view(question_id):
     question = Question.query.get_or_404(question_id)
-    if question.is_answered:
-        flash("This question is already answered.", "error")
-        return redirect(url_for('forum'))
 
-    answer = request.form.get('answer')
-    question.answer = answer
-    question.answered_by = current_user.id
-    question.is_answered = True
-    current_user.points += question.wagered_points
+    if request.method == 'POST':
+        # Get the answer from the form
+        answer = request.form.get('answer')
 
-    db.session.commit()
-    flash("Answer submitted! Points awarded.", "success")
-    return redirect(url_for('forum'))
+        # Ensure the answer is not empty
+        if not answer.strip():
+            flash("Answer cannot be empty.", "error")
+            return redirect(url_for('answer_question_view', question_id=question_id))
+
+        # Check if the question has already been answered
+        if question.is_answered:
+            flash("This question has already been answered.", "error")
+            return redirect(url_for('views.forum'))
+
+        # Save the answer and update the question status
+        question.answer = answer
+        question.answered_by = current_user.id  # Assuming `current_user` represents the logged-in user
+        question.is_answered = True
+
+        # Award points to the current user
+        current_user.points += question.wagered_points
+
+        # Commit changes to the database
+        db.session.commit()
+
+        flash("Your answer has been submitted, and points have been awarded!", "success")
+        return redirect(url_for('views.forum'))
+
+    return render_template('answer.html', question=question, user=current_user)
 
 @views.route('/vote/<int:question_id>/<string:vote_type>', methods=['POST'])
 @login_required

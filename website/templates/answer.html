@@ -1,0 +1,36 @@
+{% extends "base.html" %} {% block title %} Answer Question {% endblock %} {%
+block content %}
+<div class="container mt-5">
+	<h1>Answer the Question</h1>
+	<div class="card">
+		<div class="card-body">
+			<h5 class="card-title">{{ question.content }}</h5>
+			<p class="card-text">
+				<strong>Asked By:</strong> {{ question.user_id.first_name }}
+			</p>
+			<p class="card-text">
+				<strong>Wagered Points:</strong> {{ question.wagered_points }}
+			</p>
+		</div>
+	</div>
+	<form
+		action="{{ url_for('views.answer_question_view', question_id=question.id) }}"
+		method="POST"
+		class="mt-4"
+	>
+		{% if csrf_token %} {{ csrf_token() }} {% endif %}
+		<div class="form-group">
+			<label for="answer">Your Answer</label>
+			<textarea
+				id="answer"
+				name="answer"
+				class="form-control"
+				rows="5"
+				required
+			></textarea>
+		</div>
+		<button type="submit" class="btn btn-primary">Submit Answer</button>
+		<a href="{{ url_for('views.forum') }}" class="btn btn-secondary">Cancel</a>
+	</form>
+</div>
+{% endblock %}
