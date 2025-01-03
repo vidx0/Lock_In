@@ -1,0 +1,25 @@
+body {
+    background-color: #121212;
+    color:rgb(49, 108, 255);
+}
+
+.timer-container {
+    margin: 50px auto;
+    text-align: center;
+}
+
+.timer-display {
+    font-size: 4rem;
+    color: black;
+}
+
+.timer-buttons button {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+}
+
+button:hover{
+    transform: scale(1.05); /* Slight zoom */
+}

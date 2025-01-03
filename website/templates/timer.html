@@ -68,4 +68,9 @@
 		location.reload();
 	});
 </script>
-{% endblock %}
+{% block css %}
+<link
+	rel="stylesheet"
+	href="{{ url_for('static', filename='css/timer.css') }}"
+/>
+{% endblock %} {% endblock %}

@@ -1,0 +1,69 @@
+body {
+    background-color: white;
+}
+
+/* Navbar Styling */
+.navbar {
+    background-color: #2a2a2a; /* Slightly lighter black */
+    border-bottom: 1px solid #444; /* Subtle border for definition */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); /* Depth effect */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Clean font */
+}
+
+.navbar-toggler {
+    border: none; /* Remove default border */
+}
+
+.navbar-toggler-icon {
+    background-color: #ccc; /* Light gray for toggler */
+    border-radius: 5px;
+    padding: 5px;
+}
+
+/* Navbar Links */
+.navbar-nav .nav-link {
+    color: #e0e0e0; /* Soft white for text */
+    padding: 8px 15px; /* Adjust padding for spacing */
+    font-size: 16px;
+    font-weight: 500;
+    transition: color 0.3s, transform 0.2s; /* Smooth hover effects */
+}
+
+.navbar-nav .nav-link:hover {
+    color: #1e90ff; /* Bright blue on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+}
+
+.navbar-nav .nav-link.active {
+    color: #fff; /* White for active link */
+    font-weight: bold;
+    border-bottom: 2px solid #1e90ff; /* Blue underline for active link */
+}
+
+/* Spacing Between Links */
+.nav-item {
+    margin: 0 10px;
+}
+
+/* Dropdown Menu */
+.navbar .dropdown-menu {
+    background-color: #333; /* Darker dropdown background */
+    border: 1px solid #444; /* Border for dropdown */
+    border-radius: 5px; /* Smooth corners */
+}
+
+.dropdown-item {
+    color: #ddd; /* Light gray for dropdown items */
+}
+
+.dropdown-item:hover {
+    background-color: #1e90ff; /* Bright blue hover */
+    color: #fff; /* White text on hover */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .navbar-nav {
+        text-align: center; /* Center links on smaller screens */
+    }
+}

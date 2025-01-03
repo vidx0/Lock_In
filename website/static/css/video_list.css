@@ -1,0 +1,73 @@
+/* Page Styling */
+body {
+    background-color: #1a1a1a; /* Dark theme background */
+    color: #e0e0e0; /* Light text color */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Header Styling */
+h1 {
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 28px;
+    text-transform: uppercase;
+    border-bottom: 2px solid #1e90ff;
+    padding-bottom: 10px;
+    display: inline-block;
+}
+
+/* Video Scroll Container */
+.video-scroll-container {
+    display: flex;
+    overflow-x: auto; /* Horizontal scrolling */
+    gap: 20px;
+    padding: 20px;
+    scroll-snap-type: x mandatory; /* Snap to each video */
+}
+
+/* Video Card Styling */
+.video-card {
+    background-color: #2a2a2a; /* Slightly lighter background */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+    flex: 0 0 300px; /* Fixed width for each video card */
+    scroll-snap-align: start; /* Align video cards */
+    padding: 10px;
+    text-align: center;
+}
+
+/* Video Element Styling */
+video {
+    width: 100%; /* Make video fill the card */
+    border-radius: 5px;
+    outline: none;
+}
+
+/* Video Description */
+.video-description {
+    margin-top: 10px;
+    color: #b0b0b0;
+    font-size: 14px;
+}
+
+/* Scrollbar Styling */
+.video-scroll-container::-webkit-scrollbar {
+    height: 8px;
+}
+
+.video-scroll-container::-webkit-scrollbar-thumb {
+    background: #1e90ff; /* Blue scrollbar */
+    border-radius: 10px;
+}
+
+.video-scroll-container::-webkit-scrollbar-track {
+    background: #2a2a2a; /* Darker track */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .video-card {
+        flex: 0 0 80%; /* Adjust card width for smaller screens */
+    }
+}

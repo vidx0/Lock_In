@@ -1,15 +1,28 @@
-{% extends "base.html" %}
-
-{% block title %}Video List{% endblock %}
-
-{% block content %}
-    <h1>Uploaded Videos</h1>
-    <ul>
-        {% for video in videos %}
-            <li>
-                <strong>{{ video.filename }}</strong> - {{ video.description }} <br>
-                <a href="{{ url_for('views.watch_video', video_id=video.id) }}">Watch Video</a>
-            </li>
-        {% endfor %}
-    </ul>
+{% extends "base.html" %} {% block title %}Video List{% endblock %} {% block
+content %}
+<h1>Uploaded Videos</h1>
+<div class="video-scroll-container">
+	{% for video in videos %}
+	<div class="video-card">
+		<video controls>
+                <source src="{{ url_for('views.get_video', video_id=video.id) }}" type="video/mp4">
+                <source src="{{ url_for('views.get_video', video_id=video.id) }}" type="video/webm">
+                <source src="{{ url_for('views.get_video', video_id=video.id) }}" type="video/quicktime">
+                Your browser does not support the video tag.
+            </video>
+				type="video/mp4"
+			/>
+			Your browser does not support the video tag.
+		</video>
+		<div class="video-description">
+			<p>{{ video.description }}</p>
+		</div>
+	</div>
+	{% endfor %}
+</div>
+{% endblock %} {% block css %}
+<link
+	rel="stylesheet"
+	href="{{ url_for('static', filename='css/video_list.css') }}"
+/>
 {% endblock %}

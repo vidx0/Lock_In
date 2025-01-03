@@ -1,0 +1,115 @@
+/* Set the entire page to have a dark background */
+body {
+    background-color: #121212; /* Dark background for the entire page */
+    color: #f1f1f1;          /* Light text color for readability */
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* General styling for the container */
+.container {
+    background-color: #1a1a1a; /* Slightly lighter dark color for the middle section */
+    color: #f1f1f1;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 800px; /* Center container width */
+    margin: 20px auto; /* Center container horizontally */
+}
+
+/* Header styling */
+h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #4ea8de;
+}
+
+/* Buttons */
+.btn-primary,
+.btn-success,
+.btn-link {
+    background-color: #4ea8de;
+    color: #fff;
+    border: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-primary:hover,
+.btn-success:hover,
+.btn-link:hover {
+    background-color: #3393c3;
+    transform: translateY(-2px);
+}
+
+/* Category filter dropdown */
+#category {
+    background-color: #2a2a2a;
+    color: #f1f1f1;
+    border: 1px solid #4ea8de;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 1rem;
+}
+
+#category option {
+    background-color: #2a2a2a;
+    color: #f1f1f1;
+}
+
+/* List group */
+.list-group {
+    list-style-type: none;
+    padding: 0;
+}
+
+.list-group-item {
+    background-color: #252525;
+    border: 1px solid #4ea8de;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    transition: box-shadow 0.3s ease;
+}
+
+.list-group-item:hover {
+    box-shadow: 0 4px 10px rgba(78, 168, 222, 0.4);
+}
+
+/* Answer block styling */
+.mt-3.p-3.bg-light.border {
+    background-color: #2a2a2a;
+    border: 1px solid #4ea8de;
+    border-radius: 8px;
+    padding: 15px;
+    margin-top: 10px;
+}
+
+.mt-3.p-3.bg-light.border strong {
+    color: #4ea8de;
+}
+
+/* Typography */
+h5 {
+    font-size: 1.3rem;
+    color: #f1f1f1;
+    margin-bottom: 10px;
+}
+
+p {
+    margin-bottom: 8px;
+    color: #dcdcdc;
+}
+
+/* Form buttons */
+form button {
+    color: #4ea8de;
+    border: none;
+    background: none;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+form button:hover {
+    color: #3393c3;
+}

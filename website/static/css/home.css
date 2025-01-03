@@ -1,0 +1,122 @@
+/* General Body Styles */
+body {
+    background-color: #121212; /* Dark background */
+    color: #ffffff; /* White text */
+    font-family: "Arial", sans-serif; /* Clean font */
+    margin: 0;
+    padding: 0;
+}
+
+/* Center Content */
+h1 {
+    color: #ffffff; /* White text for heading */
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Notes List */
+#notes {
+    padding: 0;
+    list-style-type: none;
+}
+
+.list-group-item {
+    background-color: #1e1e1e; /* Dark gray for list items */
+    border: none; /* Remove borders */
+    color: #ffffff;
+    padding: 1rem;
+    margin: 0.5rem 0;
+    border-radius: 8px; /* Rounded corners */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.list-group-item:hover {
+    transform: scale(1.02); /* Slight zoom on hover */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Subtle shadow */
+}
+
+/* Close Button */
+.close {
+    color: #ffffff;
+    font-size: 1.2rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    transition: color 0.2s;
+}
+
+.close:hover {
+    color: #007bff; /* Blue accent on hover */
+}
+
+/* Form Styles */
+textarea {
+    background-color: #1e1e1e; /* Match list item background */
+    color: #ffffff;
+    border: 1px solid #343a40; /* Subtle border */
+    border-radius: 8px;
+    padding: 1rem;
+    font-size: 1rem;
+    width: 100%;
+    resize: none; /* Disable resizing */
+    transition: border-color 0.2s;
+}
+
+textarea:focus {
+    border-color: #007bff; /* Blue accent on focus */
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Subtle glow */
+}
+
+
+/* Button Styles */
+button {
+    background-color: #007bff; /* Blue primary color */
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: scale(1.05); /* Slight zoom */
+}
+
+button:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Blue glow on focus */
+}
+
+/* Center Add Note Button */
+form div {
+    margin-top: 1rem;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #007bff; /* Blue scrollbar thumb */
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #0056b3; /* Darker blue on hover */
+}
+
+::-webkit-scrollbar-track {
+    background: #121212; /* Match background color */
+}
+.form-control{
+    background-color: #1a1a1a;
+}

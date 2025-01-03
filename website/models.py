@@ -36,6 +36,7 @@ class User(db.Model, UserMixin):
     points = db.Column(db.Integer, default=0)
     rank = db.Column(db.String(50), default="Beginner")  # User rank
     time_spent = db.Column(db.Integer, default=0)  # User rank
+    notes = db.relationship('Note')
 #video metadata
 class Video(db.Model):
     id = db.Column(db.Integer, primary_key=True)

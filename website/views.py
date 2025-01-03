@@ -239,3 +239,14 @@ def get_videos():
         "has_prev": videos.has_prev
     })
 
+import mimetypes
+
+@views.route('/video/<int:video_id>')
+def get_video(video_id):
+    video = Video.query.get_or_404(video_id)
+    mime_type, _ = mimetypes.guess_type(video.filename)
+    return Response(
+        video.data,
+        mimetype=mime_type or "application/octet-stream",  # Fallback MIME type
+        headers={"Content-Disposition": f"inline; filename={video.filename}"}
+    )
