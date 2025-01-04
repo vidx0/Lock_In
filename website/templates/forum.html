@@ -1,65 +1,91 @@
-{% extends "base.html" %} {% block title %}Forum{% endblock %} {% block content
-%}
+{% extends "base.html" %}
+
+{% block title %}Forum{% endblock %}
+
+{% block content %}
 <div class="container mt-4">
-	<h1>Forum</h1>
-	<div class="mb-3">
-		<a href="{{ url_for('views.ask_question') }}" class="btn btn-primary"
-			>Ask a Question</a
-		>
-	</div>
-	<div class="mb-4">
-		<label for="category">Filter by Category:</label>
-		<select id="category" onchange="location = this.value;">
-			<option value="{{ url_for('views.forum') }}">All</option>
-			{% for category in categories %}
-			<option value="{{ url_for('views.forum', category=category.id) }}">
-				{{ category.name }}
-			</option>
-			{% endfor %}
-		</select>
-	</div>
-	<div class="list-group">
-		{% for question in questions %}
-		<div class="list-group-item">
-			<h5>{{ question.title }}</h5>
-			<p>{{ question.description }}</p>
-			<p>Wagered Points: {{ question.wagered_points }}</p>
-			<p>
-				Upvotes: {{ question.upvotes }} | Downvotes: {{ question.downvotes }}
-			</p>
-			{% if question.is_answered %}
-			<!-- Added block to display the answer if the question is answered -->
-			<div class="mt-3 p-3 bg-light border">
-				<strong>Answer:</strong>
-				<p>{{ question.answer }}</p>
-			</div>
-			{% endif %}
-			<a
-				href="{{ url_for('views.answer_question_view', question_id=question.id) }}"
-				class="btn btn-success"
-				>Answer</a
-			>
-			<form
-				method="POST"
-				action="{{ url_for('views.vote', question_id=question.id, vote_type='upvote') }}"
-				style="display: inline"
-			>
-				<button type="submit" class="btn btn-link">Upvote</button>
-			</form>
-			<form
-				method="POST"
-				action="{{ url_for('views.vote', question_id=question.id, vote_type='downvote') }}"
-				style="display: inline"
-			>
-				<button type="submit" class="btn btn-link">Downvote</button>
-			</form>
-		</div>
-		{% endfor %}
-	</div>
+    <h1>Forum</h1>
+    <div class="mb-3">
+        <a href="{{ url_for('views.ask_question') }}" class="btn btn-primary">
+            Ask a Question
+        </a>
+    </div>
+    <div class="mb-4">
+        <label for="category">Filter by Category:</label>
+        <select id="category" onchange="location = this.value;">
+            <option value="{{ url_for('views.forum') }}">All</option>
+            {% for category in categories %}
+            <option value="{{ url_for('views.forum', category=category.id) }}">
+                {{ category.name }}
+            </option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="list-group">
+        {% for question in questions %}
+        <div class="list-group-item">
+            <h5>{{ question.title }}</h5>
+            <p>{{ question.description }}</p>
+            <p>Wagered Points: {{ question.wagered_points }}</p>
+           
+            
+            <div class="d-flex align-items-center">
+                <form method="POST" action="{{ url_for('views.vote', question_id=question.id, vote_type='upvote') }}" style="display: inline;">
+                    <button type="submit" class="btn btn-link">
+                        <i class="fas fa-arrow-up"></i>
+                    </button>
+                </form>
+                
+                <span class="vote-count mx-3" id="vote-count-{{ question.id }}">
+                    {{ question.upvotes - question.downvotes }}
+                </span>
+                
+                <form method="POST" action="{{ url_for('views.vote', question_id=question.id, vote_type='downvote') }}" style="display: inline;">
+                    <button type="submit" class="btn btn-link">
+                        <i class="fas fa-arrow-down"></i>
+                    </button>
+                </form>
+            </div>
+            
+            {% if question.is_answered %}
+            <!-- Display the answer if the question is answered -->
+            <div class="mt-3 p-3 bg-light border">
+                <strong>Answer:</strong>
+                <p>{{ question.answer }}</p>
+            </div>
+            {% endif %}
+            
+            <a href="{{ url_for('views.answer_question_view', question_id=question.id) }}" class="btn btn-success">
+                Answer
+            </a>
+        </div>
+        {% endfor %}
+    </div>
 </div>
-{% endblock %} {% block css %}
-<link
-	rel="stylesheet"
-	href="{{ url_for('static', filename='css/forum.css') }}"
-/>
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/forum.css') }}" />
+<style>
+    /* Styling the voting buttons and arrows */
+    .vote-count {
+        font-weight: bold;
+        font-size: 18px;
+    }
+
+    .btn-link {
+        padding: 0;
+        margin: 0 10px;
+    }
+
+    .fa-arrow-up, .fa-arrow-down {
+        font-size: 20px;
+        cursor: pointer;
+        color: #007bff;
+    }
+
+    .fa-arrow-up:hover, .fa-arrow-down:hover {
+        color: #0056b3;
+    }
+</style>
 {% endblock %}

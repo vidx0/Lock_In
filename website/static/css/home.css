@@ -67,7 +67,7 @@ textarea {
 }
 
 textarea:focus {
-    border-color: #007bff; /* Blue accent on focus */
+    border-color: rgb(49, 108, 255); /* Blue accent on focus */
     outline: none;
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Subtle glow */
 }
@@ -75,7 +75,7 @@ textarea:focus {
 
 /* Button Styles */
 button {
-    background-color: #007bff; /* Blue primary color */
+    background-color: rgb(49, 108, 255); /* Blue primary color */
     color: #ffffff;
     border: none;
     border-radius: 8px;
@@ -88,6 +88,7 @@ button {
 button:hover {
     background-color: #0056b3; /* Darker blue on hover */
     transform: scale(1.05); /* Slight zoom */
+    
 }
 
 button:focus {
@@ -119,4 +120,53 @@ form div {
 }
 .form-control{
     background-color: #1a1a1a;
+}
+/* Navbar background */
+
+.navbar {
+    background-color: black;
+    border-bottom: 2px solid rgb(49, 108, 255); /* Optional: Adds a highlight border */
+    margin: 0; /* Remove any margin */
+    padding: 0; /* Remove any padding */
+    display: flexbox;
+    gap: 30px;
+}
+
+
+
+/* Navbar links */
+.navbar .nav-link {
+    color: rgb(49, 108, 255); /* Set the text color for the links */
+    font-weight: normal; /* Optional: Makes the text bold */
+    font-size: 20px;
+    transition: color 0.3s ease; /* Smooth color transition */
+}
+
+/* Navbar links hover effect */
+.navbar .nav-link:hover {
+    background-color: rgb(49, 108, 255);
+    color: black; /* Change text color to white on hover */
+    text-decoration: none; /* Optional: Adds underline on hover */
+    transform: scale(1.1);
+}
+
+/* Active link style */
+.navbar .nav-link.active {
+    color: black; /* Active link text color */
+    text-shadow: 0px 0px 10px rgb(49, 108, 255); /* Glow effect on the active link */
+}
+
+/* Navbar toggler (hamburger icon for mobile) */
+.navbar-toggler {
+    border-color: rgb(49, 108, 255); /* Toggler border color */
+}
+
+.navbar-toggler-icon {
+    background-color: rgb(49, 108, 255); /* Toggler icon color */
+}
+
+/* Collapsed navbar content */
+.collapse {
+    background-color: black; /* Collapsed menu background */
+    border-top: 1px solid rgb(49, 108, 255); /* Optional: Add a border at the top of the dropdown */
 }

@@ -1,69 +1,52 @@
 body {
-    background-color: white;
+    background-color: #121212;
+    color:white;
 }
 
-/* Navbar Styling */
 .navbar {
-    background-color: #2a2a2a; /* Slightly lighter black */
-    border-bottom: 1px solid #444; /* Subtle border for definition */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); /* Depth effect */
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Clean font */
+    background-color: black;
+    border-bottom: 2px solid rgb(49, 108, 255); /* Optional: Adds a highlight border */
+    margin: 0; /* Remove any margin */
+    padding: 0; /* Remove any padding */
+    display: flexbox;
+    gap: 30px;
 }
 
+
+
+/* Navbar links */
+.navbar .nav-link {
+    color: rgb(49, 108, 255); /* Set the text color for the links */
+    font-weight: normal; /* Optional: Makes the text bold */
+    font-size: 20px;
+    transition: color 0.3s ease; /* Smooth color transition */
+}
+
+/* Navbar links hover effect */
+.navbar .nav-link:hover {
+    background-color: rgb(49, 108, 255);
+    color: black; /* Change text color to white on hover */
+    text-decoration: none; /* Optional: Adds underline on hover */
+    transform: scale(1.1);
+}
+
+/* Active link style */
+.navbar .nav-link.active {
+    color: black; /* Active link text color */
+    text-shadow: 0px 0px 10px rgb(49, 108, 255); /* Glow effect on the active link */
+}
+
+/* Navbar toggler (hamburger icon for mobile) */
 .navbar-toggler {
-    border: none; /* Remove default border */
+    border-color: rgb(49, 108, 255); /* Toggler border color */
 }
 
 .navbar-toggler-icon {
-    background-color: #ccc; /* Light gray for toggler */
-    border-radius: 5px;
-    padding: 5px;
+    background-color: rgb(49, 108, 255); /* Toggler icon color */
 }
 
-/* Navbar Links */
-.navbar-nav .nav-link {
-    color: #e0e0e0; /* Soft white for text */
-    padding: 8px 15px; /* Adjust padding for spacing */
-    font-size: 16px;
-    font-weight: 500;
-    transition: color 0.3s, transform 0.2s; /* Smooth hover effects */
-}
-
-.navbar-nav .nav-link:hover {
-    color: #1e90ff; /* Bright blue on hover */
-    transform: translateY(-2px); /* Slight lift effect */
-}
-
-.navbar-nav .nav-link.active {
-    color: #fff; /* White for active link */
-    font-weight: bold;
-    border-bottom: 2px solid #1e90ff; /* Blue underline for active link */
-}
-
-/* Spacing Between Links */
-.nav-item {
-    margin: 0 10px;
-}
-
-/* Dropdown Menu */
-.navbar .dropdown-menu {
-    background-color: #333; /* Darker dropdown background */
-    border: 1px solid #444; /* Border for dropdown */
-    border-radius: 5px; /* Smooth corners */
-}
-
-.dropdown-item {
-    color: #ddd; /* Light gray for dropdown items */
-}
-
-.dropdown-item:hover {
-    background-color: #1e90ff; /* Bright blue hover */
-    color: #fff; /* White text on hover */
-}
-
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-    .navbar-nav {
-        text-align: center; /* Center links on smaller screens */
-    }
+/* Collapsed navbar content */
+.collapse {
+    background-color: black; /* Collapsed menu background */
+    border-top: 1px solid rgb(49, 108, 255); /* Optional: Add a border at the top of the dropdown */
 }

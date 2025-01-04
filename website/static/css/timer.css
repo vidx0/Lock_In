@@ -1,25 +1,149 @@
+/* General dark theme styles */
 body {
     background-color: #121212;
-    color:rgb(49, 108, 255);
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
-.timer-container {
-    margin: 50px auto;
-    text-align: center;
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
 }
 
-.timer-display {
-    font-size: 4rem;
-    color: black;
+h2 {
+    color: rgb(49, 108, 255);
+    font-weight: bold;
+    font-size: 3rem;
+    margin-bottom: 2rem;
 }
 
-.timer-buttons button {
-    margin: 10px;
+h3#timer-display {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    color: #ffffff;
+}
+
+/* Circular progress bar container */
+#timer-display {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: rgb(49, 108, 255);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.text-center.mt-4 p {
+    color: rgb(49, 108, 255); /* Changes the text color for all <p> elements inside .text-center.mt-4 */
+    font-size: 30px; /* Optional: Adjust font size */
+    font-weight:bold;
+}
+
+.text-center.mt-4 p span {
+    color: rgb(49, 108, 255); /* Changes the color of the dynamic data inside <span> tags */
+    font-weight: bolder; /* Optional: Make it bold for emphasis */
+}
+
+.text-center.mt-4 p::after {
+    content: "!";
+    color: rgb(49, 108, 255); /* Optional: Adds exclamation points with a red color if needed */
+}
+
+
+
+/* Button styles */
+button {
     padding: 10px 20px;
-    font-size: 1.2rem;
+    font-size: 1rem;
+    border: none;
     border-radius: 5px;
+    margin: 5px;
+    cursor: pointer;
 }
 
-button:hover{
-    transform: scale(1.05); /* Slight zoom */
+button:disabled {
+    background-color: #757575;
+    cursor: not-allowed;
 }
+
+.btn-success {
+    background-color: #00c853;
+    color: #ffffff;
+}
+
+.btn-success:hover {
+    background-color: #00e676;
+}
+
+.btn-danger {
+    background-color: #d32f2f;
+    color: #ffffff;
+}
+
+.btn-danger:hover {
+    background-color: #f44336;
+}
+
+/* Additional text styles */
+p {
+    margin: 0.5rem 0;
+    font-size: 1rem;
+    color: #bdbdbd;
+}
+.navbar {
+    background-color: black;
+    border-bottom: 2px solid rgb(49, 108, 255); /* Optional: Adds a highlight border */
+    margin: 0; /* Remove any margin */
+    padding: 0; /* Remove any padding */
+    display: flexbox;
+    gap: 30px;
+}
+
+
+
+/* Navbar links */
+.navbar .nav-link {
+    color: rgb(49, 108, 255); /* Set the text color for the links */
+    font-weight: normal; /* Optional: Makes the text bold */
+    font-size: 20px;
+    transition: color 0.3s ease; /* Smooth color transition */
+}
+
+/* Navbar links hover effect */
+.navbar .nav-link:hover {
+    background-color: rgb(49, 108, 255);
+    color: black; /* Change text color to white on hover */
+    text-decoration: none; /* Optional: Adds underline on hover */
+    transform: scale(1.1);
+}
+
+/* Active link style */
+.navbar .nav-link.active {
+    color: black; /* Active link text color */
+    text-shadow: 0px 0px 10px rgb(49, 108, 255); /* Glow effect on the active link */
+}
+
+/* Navbar toggler (hamburger icon for mobile) */
+.navbar-toggler {
+    border-color: rgb(49, 108, 255); /* Toggler border color */
+}
+
+.navbar-toggler-icon {
+    background-color: rgb(49, 108, 255); /* Toggler icon color */
+}
+
+/* Collapsed navbar content */
+.collapse {
+    background-color: black; /* Collapsed menu background */
+    border-top: 1px solid rgb(49, 108, 255); /* Optional: Add a border at the top of the dropdown */
+}
+

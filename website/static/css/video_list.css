@@ -1,68 +1,71 @@
-/* Page Styling */
-body {
-    background-color: #1a1a1a; /* Dark theme background */
-    color: #e0e0e0; /* Light text color */
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+/* Make entire page background black */
+html, body {
+    background-color: black; /* Set the background color of the entire page to black */
+    color: white; /* Change text color to white for better contrast */
 }
 
-/* Header Styling */
-h1 {
-    color: #ffffff;
-    text-align: center;
-    margin-bottom: 20px;
-    font-size: 28px;
-    text-transform: uppercase;
-    border-bottom: 2px solid #1e90ff;
-    padding-bottom: 10px;
-    display: inline-block;
-}
-
-/* Video Scroll Container */
+/* Scroll container with snap behavior */
 .video-scroll-container {
     display: flex;
-    overflow-x: auto; /* Horizontal scrolling */
-    gap: 20px;
-    padding: 20px;
-    scroll-snap-type: x mandatory; /* Snap to each video */
+    flex-direction: column;
+    height: 100vh; /* Full viewport height */
+    overflow-y: scroll; /* Enable scrolling */
+    scroll-snap-type: y mandatory; /* Snap to sections */
 }
 
-/* Video Card Styling */
+/* Each video card occupies full screen */
 .video-card {
-    background-color: #2a2a2a; /* Slightly lighter background */
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
-    flex: 0 0 300px; /* Fixed width for each video card */
-    scroll-snap-align: start; /* Align video cards */
-    padding: 10px;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full height of viewport */
+    width: 100%; /* Full width */
+    scroll-snap-align: start; /* Snap alignment */
+    position: relative; /* For positioning description */
+    background-color: #000; /* Black background for better contrast */
 }
 
-/* Video Element Styling */
-video {
-    width: 100%; /* Make video fill the card */
-    border-radius: 5px;
-    outline: none;
+/* Video styling to fit within the viewport */
+.video-card video {
+    height: 100%; /* Ensure the video scales within height */
+    width: 100%; /* Ensure the video scales within width */
+    object-fit: contain; /* Maintain aspect ratio and fit entirely */
+    background-color: black; /* Black background for letterboxing */
 }
 
-/* Video Description */
+/* Styling for the video description */
 .video-description {
-    margin-top: 10px;
-    color: #b0b0b0;
-    font-size: 14px;
-}
-
-/* Scrollbar Styling */
-.video-scroll-container::-webkit-scrollbar {
-    height: 8px;
-}
-
-.video-scroll-container::-webkit-scrollbar-thumb {
-    background: #1e90ff; /* Blue scrollbar */
+    position: absolute;
+    bottom: 10%; /* Positioned slightly above bottom */
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.6); /* Transparent black background */
+    color: #fff;
+    padding: 10px 20px;
     border-radius: 10px;
+    font-size: 16px;
+    text-align: center;
+    max-width: 90%; /* Prevent overflow */
 }
 
-.video-scroll-container::-webkit-scrollbar-track {
-    background: #2a2a2a; /* Darker track */
+/* Hide the scrollbar for a cleaner UI */
+.video-scroll-container::-webkit-scrollbar {
+    display: none;
+}
+
+.video-scroll-container {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+/* Navbar styling to ensure it's fixed */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000; /* Keep above scrolling videos */
+    background-color: rgba(0, 0, 0, 0.8); /* Add a transparent background */
 }
 
 /* Responsive Design */
@@ -70,4 +73,51 @@ video {
     .video-card {
         flex: 0 0 80%; /* Adjust card width for smaller screens */
     }
+}
+
+/* Navbar style */
+.navbar {
+    background-color: black;
+    border-bottom: 2px solid rgb(49, 108, 255); /* Optional: Adds a highlight border */
+    margin: 0; /* Remove any margin */
+    padding: 0; /* Remove any padding */
+    display: flexbox;
+    gap: 30px;
+}
+
+/* Navbar links */
+.navbar .nav-link {
+    color: rgb(49, 108, 255); /* Set the text color for the links */
+    font-weight: normal; /* Optional: Makes the text bold */
+    font-size: 20px;
+    transition: color 0.3s ease; /* Smooth color transition */
+}
+
+/* Navbar links hover effect */
+.navbar .nav-link:hover {
+    background-color: rgb(49, 108, 255);
+    color: black; /* Change text color to white on hover */
+    text-decoration: none; /* Optional: Adds underline on hover */
+    transform: scale(1.1);
+}
+
+/* Active link style */
+.navbar .nav-link.active {
+    color: black; /* Active link text color */
+    text-shadow: 0px 0px 10px rgb(49, 108, 255); /* Glow effect on the active link */
+}
+
+/* Navbar toggler (hamburger icon for mobile) */
+.navbar-toggler {
+    border-color: rgb(49, 108, 255); /* Toggler border color */
+}
+
+.navbar-toggler-icon {
+    background-color: rgb(49, 108, 255); /* Toggler icon color */
+}
+
+/* Collapsed navbar content */
+.collapse {
+    background-color: black; /* Collapsed menu background */
+    border-top: 1px solid rgb(49, 108, 255); /* Optional: Add a border at the top of the dropdown */
 }

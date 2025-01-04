@@ -3,7 +3,8 @@
 {% block title %}Upload Video{% endblock %}
 
 {% block content %}
-    <h1>Upload a New Video</h1>
+<div>
+    <h1 class="justify-content-center">Upload a New Video</h1>
     <form action="/upload" method="POST" enctype="multipart/form-data">
         <div class="form-group">
             <label for="video">Video File:</label>
@@ -21,7 +22,7 @@
 <link
     rel="stylesheet"
     href="{{ url_for('static', filename='css/upload.css') }}"
-/>
+/></div>
 {% endblock %}
 </body>
 

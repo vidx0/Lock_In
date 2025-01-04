@@ -1,28 +1,55 @@
-{% extends "base.html" %} {% block title %}Video List{% endblock %} {% block
-content %}
-<h1>Uploaded Videos</h1>
+{% extends "base.html" %}
+
+{% block title %}YouTube Shorts Style Video Scrolling{% endblock %}
+
+{% block content %}
 <div class="video-scroll-container">
-	{% for video in videos %}
-	<div class="video-card">
-		<video controls>
-                <source src="{{ url_for('views.get_video', video_id=video.id) }}" type="video/mp4">
-                <source src="{{ url_for('views.get_video', video_id=video.id) }}" type="video/webm">
-                <source src="{{ url_for('views.get_video', video_id=video.id) }}" type="video/quicktime">
-                Your browser does not support the video tag.
-            </video>
-				type="video/mp4"
-			/>
-			Your browser does not support the video tag.
-		</video>
-		<div class="video-description">
-			<p>{{ video.description }}</p>
-		</div>
-	</div>
-	{% endfor %}
+    {% for video in videos %}
+    <div class="video-card">
+        <video autoplay muted loop playsinline>
+            <source src="{{ url_for('views.get_video', video_id=video.id) }}" type="video/mp4">
+            <source src="{{ url_for('views.get_video', video_id=video.id) }}" type="video/webm">
+            <source src="{{ url_for('views.get_video', video_id=video.id) }}" type="video/quicktime">
+            Your browser does not support the video tag.
+        </video>
+        <div class="video-description">
+            <p>{{ video.description }}</p>
+        </div>
+    </div>
+    {% endfor %}
 </div>
-{% endblock %} {% block css %}
+{% endblock %}
+
+
+{% block scripts %}
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const videos = document.querySelectorAll("video");
+
+    // Pause all videos except the one in view
+    const handleScroll = () => {
+        videos.forEach(video => {
+            const rect = video.getBoundingClientRect();
+            const isVisible = rect.top >= 0 && rect.bottom <= window.innerHeight;
+            if (isVisible) {
+                video.play();
+            } else {
+                video.pause();
+            }
+        });
+    };
+
+    // Listen to scroll events
+    window.addEventListener("scroll", handleScroll);
+
+    // Initial check
+    handleScroll();
+});
+</script>
+{% endblock %}
+{% block css %}
 <link
-	rel="stylesheet"
-	href="{{ url_for('static', filename='css/video_list.css') }}"
+    rel="stylesheet"
+    href="{{ url_for('static', filename='css/video_list.css') }}"
 />
 {% endblock %}
