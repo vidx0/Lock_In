@@ -250,3 +250,9 @@ def get_video(video_id):
         mimetype=mime_type or "application/octet-stream",  # Fallback MIME type
         headers={"Content-Disposition": f"inline; filename={video.filename}"}
     )
+
+@views.route('/leaderboard')
+def leaderboard():
+    # Fetch all users ordered by points in descending order
+    users = User.query.order_by(User.points.desc()).all()
+    return render_template('leaderboard.html', users=users, user=current_user)

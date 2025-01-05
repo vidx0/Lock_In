@@ -113,6 +113,8 @@ form button {
 form button:hover {
     color: #3393c3;
 }
+
+/*navbar*/
 .navbar {
     background-color: black;
     border-bottom: 2px solid rgb(49, 108, 255); /* Optional: Adds a highlight border */

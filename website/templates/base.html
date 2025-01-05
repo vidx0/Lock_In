@@ -31,6 +31,9 @@
 				<div class="navbar-nav">
 					{% if user.is_authenticated %}
 					<a class="nav-item nav-link" id="home" href="/">Home</a>
+					<a class="nav-item nav-link" id="leaderboard" href="/leaderboard"
+						>Leaderboard</a
+					>
 					<a class="nav-item nav-link" id="timer" href="/timer">Timer</a>
 					<a class="nav-item nav-link" id="upload" href="/upload">Upload</a>
 					<a class="nav-item nav-link" id="video_list" href="/videos">Videos</a>
@@ -91,7 +94,10 @@
 				});
 			}
 		</script>
-		<script src="https://kit.fontawesome.com/9027733492.js" crossorigin="anonymous"></script>
+		<script
+			src="https://kit.fontawesome.com/9027733492.js"
+			crossorigin="anonymous"
+		></script>
 		{% endblock %} {% block css %}
 		<link
 			rel="stylesheet"

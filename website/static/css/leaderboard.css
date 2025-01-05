@@ -1,0 +1,122 @@
+body {
+    background-color: #121212;
+    color: #ffffff;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Leaderboard Container */
+.container {
+    max-width: 800px;
+    margin: 10 auto;
+    padding: 20px;
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+
+    
+
+
+}
+
+/* Heading Style */
+.text-primary {
+    color: rgb(49, 108, 255);
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Table Style */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    color: #eaeaea;
+}
+
+.table thead {
+    background-color: #2b2b2b;
+}
+
+.table thead th {
+    text-align: center;
+    padding: 10px;
+    color: rgb(49, 108, 255);
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.table tbody tr {
+    border-bottom: 1px solid #333;
+}
+
+.table tbody tr:nth-child(odd) {
+    background-color: #1a1a1a;
+}
+
+.table tbody tr:nth-child(even) {
+    background-color: #242424;
+}
+
+.table tbody td {
+    padding: 10px;
+    text-align: center;
+}
+
+.table tbody tr:hover {
+    background-color: rgba(49, 108, 255, 0.2);
+}
+
+/* Rank Styling */
+.table tbody td:first-child {
+    font-weight: bold;
+    color: rgb(49, 108, 255);
+}
+/*navbar*/
+.navbar {
+    background-color: black;
+    border-bottom: 2px solid rgb(49, 108, 255); /* Optional: Adds a highlight border */
+    margin: 0; /* Remove any margin */
+    padding: 0; /* Remove any padding */
+    display: flexbox;
+    gap: 30px;
+}
+
+
+
+/* Navbar links */
+.navbar .nav-link {
+    color: rgb(49, 108, 255); /* Set the text color for the links */
+    font-weight: normal; /* Optional: Makes the text bold */
+    font-size: 20px;
+    transition: color 0.3s ease; /* Smooth color transition */
+}
+
+/* Navbar links hover effect */
+.navbar .nav-link:hover {
+    background-color: rgb(49, 108, 255);
+    color: black; /* Change text color to white on hover */
+    text-decoration: none; /* Optional: Adds underline on hover */
+    transform: scale(1.1);
+}
+
+/* Active link style */
+.navbar .nav-link.active {
+    color: black; /* Active link text color */
+    text-shadow: 0px 0px 10px rgb(49, 108, 255); /* Glow effect on the active link */
+}
+
+/* Navbar toggler (hamburger icon for mobile) */
+.navbar-toggler {
+    border-color: rgb(49, 108, 255); /* Toggler border color */
+}
+
+.navbar-toggler-icon {
+    background-color: rgb(49, 108, 255); /* Toggler icon color */
+}
+
+/* Collapsed navbar content */
+.collapse {
+    background-color: black; /* Collapsed menu background */
+    border-top: 1px solid rgb(49, 108, 255); /* Optional: Add a border at the top of the dropdown */
+}
